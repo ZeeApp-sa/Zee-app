@@ -5,7 +5,13 @@ import { db } from '@/lib/firebaseClient';
 import { collection, getDocs } from 'firebase/firestore';
 
 export default function TestPage() {
-  const [stores, setStores] = useState<any[]>([]);
+  type Store = {
+    id: string;
+    name?: string;
+    address?: string;
+  };
+
+  const [stores, setStores] = useState<Store[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
