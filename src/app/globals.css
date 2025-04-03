@@ -1,0 +1,52 @@
+/* ✅ globals.css — Zee App base styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌿 Custom component layer for reusable patterns */
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f4f4;
+    color: #0f172a;
+  }
+}
+
+@layer components {
+  .section {
+    @apply max-w-5xl mx-auto px-4 py-8;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm p-6 border border-gray-200;
+  }
+
+  .heading-xl {
+    @apply text-3xl md:text-4xl font-bold text-primary mb-4;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-5 py-2.5 rounded-md font-semibold hover:bg-green-700 transition;
+  }
+
+  .btn-secondary {
+    @apply border border-primary text-primary px-5 py-2.5 rounded-md font-medium hover:bg-primary hover:text-white transition;
+  }
+
+  .input {
+    @apply border border-gray-300 rounded-md px-4 py-2 w-full text-sm focus:outline-none focus:ring-2 focus:ring-primary placeholder-gray-500;
+  }
+
+  .nav-link {
+    @apply text-secondary font-medium hover:text-primary transition;
+  }
+
+  .bottom-nav-button {
+    @apply flex flex-col items-center text-xs text-gray-500 hover:text-primary transition;
+  }
+
+  .bottom-nav-button-active {
+    @apply text-primary;
+  }
+}
