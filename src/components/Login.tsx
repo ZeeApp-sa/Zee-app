@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebaseClient'; 
 import Link from 'next/link';
 
@@ -24,6 +26,10 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <h1 className="text-5xl font-bold text-green-600 mb-2">Zee</h1>
+      <p className="text-sm text-gray-500 mb-6">Discover. Connect. Enjoy.</p>
+      
+
       <form onSubmit={handleLogin} className="bg-white p-6 rounded shadow-md w-80">
         <h2 className="text-xl font-semibold mb-4 text-center">Login</h2>
 
