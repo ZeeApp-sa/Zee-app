@@ -1,21 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebaseClient';
+import { auth, db } from '@/lib/firebaseClient'; // make sure db is exported from firebaseClient
+import { doc, setDoc } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+
 export default function Register() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [idNumber, setIdNumber] = useState('');
+    const [zeeUsername, setZeeUsername] = useState('');
+    const [agreeTerms, setAgreeTerms] = useState(false);
+    const [error, setError] = useState<string | null>(null)
+    const router = useRouter();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    if (!agreeTerms) {
+        setError('You must agree to the Terms and Conditions.');
+        return;
+      }
 
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
@@ -23,21 +34,58 @@ export default function Register() {
     }
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      router.push('/login'); // or change to '/login' or wherever you want to go after register
-    } catch (err: any) {
-      console.error(err.message);
-      setError('Registration failed. Please try again.');
-    }
-  };
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, 'users', user.uid), {
+          fullName,
+          idNumber,
+          zeeUsername,
+          email,
+          createdAt: new Date().toISOString(),
+        });
+  
+        router.push('/login'); // navigate to login page after registration
+      } catch (err: any) {
+        console.error(err.message);
+        setError('Registration failed. Please try again.');
+      }
+    };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4">
       <div className="w-full max-w-sm text-center">
-        <h1 className="text-5xl font-bold text-green-600 mb-2">Zee</h1>
+        <h1 className="text-5xl font-bold text-green-600 mb-2" >
+            Let's<br />
+            Create Your <br />
+            Account</h1>
         <p className="text-sm text-gray-500 mb-6">Join us and explore something new!</p>
 
         <form onSubmit={handleRegister} className="space-y-4">
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+          className="w-full px-4 py-2 border-2 border-green-500 rounded-full focus:outline-none"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Zee Username"
+          value={zeeUsername}
+          onChange={(e) => setZeeUsername(e.target.value)}
+          className="w-full px-4 py-2 border-2 border-green-500 rounded-full focus:outline-none"
+          required
+        />
+        <input
+          type="text"
+          placeholder="ID Number"
+          value={idNumber}
+          onChange={(e) => setIdNumber(e.target.value)}
+          className="w-full px-4 py-2 border-2 border-green-500 rounded-full focus:outline-none"
+          required
+        />
           <input
             type="email"
             placeholder="Email/Username"
@@ -71,6 +119,20 @@ export default function Register() {
           >
             Register
           </button>
+
+          <div className="flex items-center space-x-2">
+            <input
+                type="checkbox"
+                id="terms"
+                checked={agreeTerms}
+                onChange={(e) => setAgreeTerms(e.target.checked)}
+                className="h-4 w-4 text-green-600 border-gray-300 rounded"
+                required
+            />
+            <label htmlFor="terms" className="text-sm text-gray-700">
+                I agree to the <a href="/terms" className="text-green-600 underline">Terms and Conditions</a>
+            </label>
+            </div>
 
           <Link
             href="/login"
