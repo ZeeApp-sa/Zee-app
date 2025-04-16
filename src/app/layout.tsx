@@ -5,6 +5,7 @@ import NavBar from '@/components/NavBar';
 import BottomNav from '@/components/BottomNav';
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
+import { AuthProvider } from '@/lib/AuthContext';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,9 +40,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar />
-        <main className="container">{children}</main>
-        <BottomNav />
+        <AuthProvider>
+          <NavBar />
+          <main className="container">{children}</main>
+          <BottomNav />
+        </AuthProvider>
+
       </body>
     </html>
   );
