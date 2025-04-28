@@ -53,14 +53,6 @@ export default function Register() {
     };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-4">
-      <div className="w-full max-w-sm text-center">
-        <h1 className="text-5xl font-bold text-green-600 mb-2" >
-            Let's<br />
-            Create Your <br />
-            Account</h1>
-        <p className="text-sm text-gray-500 mb-6">Join us and explore something new!</p>
-
         <form onSubmit={handleRegister} className="space-y-4">
         <input
           type="text"
@@ -141,7 +133,5 @@ export default function Register() {
             Back to Login
           </Link>
         </form>
-      </div>
-    </div>
   );
 }
