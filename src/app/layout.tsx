@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import NavBar from '@/components/NavBar';
-import BottomNav from '@/components/BottomNav';
+// import NavBar from '@/components/NavBar';
+// import BottomNav from '@/components/BottomNav';
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { AuthProvider } from '@/lib/AuthContext';
@@ -41,9 +41,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <NavBar />
+          {/* <NavBar /> */}
           <main className="container">{children}</main>
-          <BottomNav />
+          {/* <BottomNav /> */}
         </AuthProvider>
 
       </body>
