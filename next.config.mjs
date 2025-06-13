@@ -8,7 +8,6 @@ const withPWA = nextPwa({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true, // optional: strict TS handling
