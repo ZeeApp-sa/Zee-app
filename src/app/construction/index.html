@@ -1,14 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zee - Coming Soon</title>
-  <meta name="keywords" content="Zee, cannabis clubs South Africa, cannabis app, find cannabis near me, cannabis promotions, cannabis membership, cannabis product info, safe cannabis access, cannabis community, cannabis dashboard, partner cannabis platform, cannabis business growth, cannabis ecosystem, South Africa cannabis, digital cannabis club, cannabis rewards, cannabis deals, secure cannabis app, cannabis transparency, cannabis club manager
-  <meta name=" description" content="" Zee is South Africa's secure digital gateway for discovering top cannabis clubs,
-    quality products, and exclusive deals. For members, it's a smart way to connect with a safe cannabis community. For
-    partners, it's a powerful dashboard to manage your club, showcase offerings, and grow your business." />
+  <meta name="keywords" content="Zee, cannabis clubs South Africa, cannabis app, find cannabis near me, cannabis promotions, cannabis membership, cannabis product info, safe cannabis access, cannabis community, cannabis dashboard, partner cannabis platform, cannabis business growth, cannabis ecosystem, South Africa cannabis, digital cannabis club, cannabis rewards, cannabis deals, secure cannabis app, cannabis transparency, cannabis club manager" />
+  <meta name="description" content="Zee is South Africa's secure digital gateway for discovering top cannabis clubs, quality products, and exclusive deals. For members, it's a smart way to connect with a safe cannabis community. For partners, it's a powerful dashboard to manage your club, showcase offerings, and grow your business." />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <style>
@@ -35,9 +31,18 @@
       padding: 2rem;
     }
 
+    .coming-soon {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      opacity: 0.8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
     .logo-container {
-      width: 180px;
-      height: 180px;
+      width: 540px;
+      height: 540px;
       margin: 0 auto 2rem;
       display: flex;
       align-items: center;
@@ -47,12 +52,7 @@
     .logo img {
       width: 100%;
       height: auto;
-    }
-
-    .title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      max-width: 100%;
     }
 
     .subtitle {
@@ -126,8 +126,13 @@
     }
 
     @media (max-width: 600px) {
-      .title {
-        font-size: 2.2rem;
+      .coming-soon {
+        font-size: 0.9rem;
+      }
+
+      .logo-container {
+        width: 300px;
+        height: 300px;
       }
 
       .subtitle {
@@ -136,36 +141,41 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
+    
+    <h1 class="coming-soon">Coming Soon</h1>
+
     <div class="logo-container">
       <div class="logo">
-        <!-- Replace this src with your actual image if needed -->
-        <img src="./images/Zee-Whitelogo.svg" alt="Zee Logo" />
+        <img src="zee-logo.svg" alt="Zee Logo" />
       </div>
     </div>
 
-    <h1 class="title">Coming Soon</h1>
     <p class="subtitle">Discover. Connect. Experience.</p>
 
     <!-- Email Signup -->
     <form class="signup-form" onsubmit="submitToGoogleForm(event)">
-      <input type="email" class="email-input" placeholder="Enter your email address" required id="emailInput" />
+      <input
+        type="email"
+        class="email-input"
+        placeholder="Enter your email address"
+        required
+        id="emailInput"
+      />
       <button type="submit" class="notify-btn">
         <i class="fas fa-bell"></i> Notify Me
       </button>
     </form>
 
     <p class="description">
-      We're building something amazing for you. Zee will revolutionize how you discover local clubs,
+      We're building something amazing for you. Zee will revolutionize how you discover local clubs, 
       exclusive promotions, and unique products in your area.
     </p>
 
     <!-- Social Icons -->
     <div class="social-icons">
-      <a href="https://www.facebook.com/profile.php?id=61575974814350" class="social-icon" title="Facebook"
-        target="_blank">
+      <a href="https://www.facebook.com/profile.php?id=61575974814350" class="social-icon" title="Facebook" target="_blank">
         <i class="fab fa-facebook-f"></i>
       </a>
       <a href="https://www.instagram.com/getzeeapp/" class="social-icon" title="Instagram" target="_blank">
@@ -193,5 +203,4 @@
     }
   </script>
 </body>
-
 </html>
